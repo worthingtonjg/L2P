@@ -1,2 +1,2 @@
 # L2P
-Learning to Program Class Material
+Material from a class I am teaching on programming
