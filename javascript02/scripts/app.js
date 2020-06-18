@@ -18,23 +18,33 @@ var load = function(id, fileName)
 
 var getPage = function()
 {
+    // get the url
     var url = window.location.href;
+
+    // split the url from the query params
     var parts = url.split("?");
-    if(parts.length > 0)
+    console.log(parts.length);
+    if(parts.length < 2)
     {
-        var params = parts[1].split("&");
-        if(params.length > 0) 
-        {
-            var pair = params[0].split("=");
-            if(pair.length == 2)
-            {
-                if(pair[0]=="page")
-                {
-                    return pair[1];
-                }
-            }
-        }
+        return 1;
     }
+
+    // split the params
+    var params = parts[1].split("&");
+
+    // look at the first param and split on the = symbol
+    var pair = params[0].split("=");
+    if(pair.length < 2)
+    {
+        return 1;
+    }
+        
+    if(pair[0]=="page")
+    {
+        return pair[1];
+    }
+
+    return 1;
 }
 
 load('content','pages/page'+getPage()+'.html');
